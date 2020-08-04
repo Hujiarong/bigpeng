@@ -71,6 +71,7 @@ class WriteView(LoginRequiredMixin,View):
 
 class DetailView(LoginRequiredMixin,View):
     '''详情'''
+    # 使用方法同时返回帖子和评论，在评论模板中，comments.user可以获取当前登陆的用户名
     def get(self,request,id):
         news = News.objects.get(id=id)
         comments = Comment.objects.filter(news_id=id)
